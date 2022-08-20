@@ -11,7 +11,7 @@
         <div class="parent-paginate">
             <div class="body-paginate">
                 <div class="paginate">
-                    <div class="number" v-for="(num, index) of totalVisible" :key="index" @click="changePage(num)">
+                    <div class="number" v-for="(num, index) of pLength" :key="index" @click="changePage(num)">
                         {{ num }}
                     </div>
                 </div>
@@ -34,8 +34,16 @@ export default {
     },
 
     mounted() {
+        this.getPage()
     },
     methods: {
+        getPage() {
+            if (this.length <= this.totalVisible) {
+                this.pLength = this.length
+            } else {
+                this.pLength = this.totalVisible
+            }
+        },
         changePage(page) {
             this.pPage = page
         }

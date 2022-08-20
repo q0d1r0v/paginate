@@ -1,6 +1,6 @@
 <template>
   <div>
-    <paginate :page="1" :length="27" :total-visible="6" />
+    <paginate :page="1" :length="4" :total-visible="6" />
   </div>
 </template>
 <script>
