@@ -1,7 +1,12 @@
 <template>
     <div class="parent">
         <div class="body">
-            <span class="num">{{ page }}</span>
+            <div>
+                <span class="num">{{ pPage }}
+                </span>
+                <br>
+                <span class="author">by-kadirov</span>
+            </div>
         </div>
         <div class="parent-paginate">
             <div class="body-paginate">
@@ -29,17 +34,21 @@ export default {
     },
 
     mounted() {
-        this.getPage(this.page, this.length, this.totalVisible)
     },
     methods: {
         changePage(page) {
-            this.page = page
+            this.pPage = page
         }
     }
 };
 </script>
 
 <style>
+.author {
+    color: gray;
+    font-size: 12px;
+}
+
 .parent {
     width: 100%;
     height: 100vh;
@@ -52,6 +61,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .parent-paginate {
