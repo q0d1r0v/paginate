@@ -32,11 +32,6 @@ export default {
         this.getPage(this.page, this.length, this.totalVisible)
     },
     methods: {
-        getPage(page, length, totalVisible) {
-            this.pPage = page
-            this.pLength = length
-            this.pTotalVisible = totalVisible
-        },
         changePage(page) {
             this.page = page
         }
