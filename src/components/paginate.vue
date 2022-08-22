@@ -11,19 +11,19 @@
         <div class="parent-paginate">
             <div class="body-paginate">
                 <div class="paginate">
-                    <div class="number" @click="goFirst()">
+                    <div class="lNumber" @click="goFirst()">
                         <img src="../assets/two-left-arrow.png" width="20px" />
                     </div>
-                    <div class="number" @click="leftPage()">
+                    <div class="lNumber" @click="leftPage()">
                         <img src="../assets/left-arrow.png" width="20px" />
                     </div>
                     <div class="pNumber">
                         {{ pPage }}
                     </div>
-                    <div class="number" @click="rightPage()">
+                    <div class="rNumber" @click="rightPage()">
                         <img src="../assets/right-arrow.png" width="20px" />
                     </div>
-                    <div class="number" @click="goEnd()">
+                    <div class="rNumber" @click="goEnd()">
                         <img src="../assets/two-right-arrow.png" width="20px" />
                     </div>
                 </div>
@@ -55,18 +55,38 @@ export default {
         rightPage() {
             if (this.pPage < this.length) {
                 this.pPage++
+                document.getElementsByClassName("lNumber")[0].style.setProperty('background-color', 'lightgreen', 'important')
+                document.getElementsByClassName("lNumber")[1].style.setProperty('background-color', 'lightgreen', 'important')
+            } else if (this.pPage === this.length) {
+                document.getElementsByClassName("rNumber")[0].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
+                document.getElementsByClassName("rNumber")[1].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
             }
         },
         leftPage() {
             if (this.pPage <= this.length && this.pPage !== 1) {
                 this.pPage--
+                document.getElementsByClassName("rNumber")[0].style.setProperty('background-color', 'lightgreen', 'important')
+                document.getElementsByClassName("rNumber")[1].style.setProperty('background-color', 'lightgreen', 'important')
+            } else if (this.page === 1) {
+                document.getElementsByClassName("lNumber")[0].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
+                document.getElementsByClassName("lNumber")[1].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
             }
         },
         goEnd() {
             this.pPage = this.length
+            document.getElementsByClassName("rNumber")[1].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
+            document.getElementsByClassName("rNumber")[0].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
+
+            document.getElementsByClassName("lNumber")[0].style.setProperty('background-color', 'lightgreen', 'important')
+            document.getElementsByClassName("lNumber")[1].style.setProperty('background-color', 'lightgreen', 'important')
         },
         goFirst() {
             this.pPage = 1
+            document.getElementsByClassName("lNumber")[0].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
+            document.getElementsByClassName("lNumber")[1].style.setProperty('background-color', 'rgba(155, 155, 155, 0.445)', 'important')
+
+            document.getElementsByClassName("rNumber")[0].style.setProperty('background-color', 'lightgreen', 'important')
+            document.getElementsByClassName("rNumber")[1].style.setProperty('background-color', 'lightgreen', 'important')
         },
         updatePage() {
             this.$emit("updatePage", this.pPage)
@@ -157,6 +177,44 @@ export default {
 }
 
 .number:hover {
+    background: rgb(157, 247, 157);
+}
+
+.lNumber {
+    min-width: 40px;
+    border-radius: 5px;
+    height: 40px;
+    background: lightgreen;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: 5px;
+    -webkit-user-select: none;
+}
+
+.lNumber:hover {
+    background: rgb(157, 247, 157);
+}
+
+.rNumber {
+    min-width: 40px;
+    border-radius: 5px;
+    height: 40px;
+    background: lightgreen;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: 5px;
+    -webkit-user-select: none;
+}
+
+.rNumber:hover {
     background: rgb(157, 247, 157);
 }
 
