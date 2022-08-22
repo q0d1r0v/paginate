@@ -196,7 +196,11 @@ export default {
 }
 
 .lNumber:hover {
-    background: rgb(157, 247, 157);
+    background: rgb(157, 247, 157) !important;
+}
+
+.lNumber:active {
+    background: rgb(170, 255, 170) !important;
 }
 
 .rNumber {
@@ -215,11 +219,11 @@ export default {
 }
 
 .rNumber:hover {
-    background: rgb(157, 247, 157);
+    background: rgb(157, 247, 157) !important;
 }
 
-.number:active {
-    background: rgb(170, 255, 170);
+.rNumber:active {
+    background: rgb(170, 255, 170) !important;
 }
 
 .num {
