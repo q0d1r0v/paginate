@@ -26,7 +26,8 @@ methods: {
 
 ## first step =>
 ```
-npm install
+git clone https://github.com/qodirovoybekjon4929/paginate.git && npm install
+
 ```
 
 ### next step => 
