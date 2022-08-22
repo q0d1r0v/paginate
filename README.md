@@ -26,12 +26,17 @@ methods: {
 
 ## first step =>
 ```
-git clone https://github.com/qodirovoybekjon4929/paginate.git && npm install
+git clone https://github.com/qodirovoybekjon4929/paginate.git
 
 ```
 
 ### next step => 
 ```
+cd paginate
+
+npm i
+
 npm run dev
+
 ```
 
