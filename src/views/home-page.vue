@@ -1,6 +1,6 @@
 <template>
   <div>
-    <paginate :page="page" :length="10" @updatePage="goServer" />
+    <paginate :page="page" :length="19" @updatePage="goServer" />
   </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ export default {
 
   methods: {
     goServer(data) {
-      alert(data)
+      console.log(data)
     }
   }
 };
