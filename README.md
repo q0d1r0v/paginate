@@ -7,14 +7,20 @@ page => number
 
 length => number
 
-total-visible => number
+updatePage => method
 
 ```
 
 ## for example
 
 ```
-<paginate :page="1" :length="27" :total-visible="6" />
+<paginate :page="1" :length="27" @updatePage="goServer" />
+
+methods: {
+    goServer(pageNumber) {
+      console.log(pageNumber)
+    }
+}
 
 ```
 

@@ -11,8 +11,20 @@
         <div class="parent-paginate">
             <div class="body-paginate">
                 <div class="paginate">
-                    <div class="number" v-for="(num, index) of pLength" :key="index" @click="changePage(num)">
-                        {{ num }}
+                    <div class="number" @click="goFirst()">
+                        <img src="../assets/two-left-arrow.png" width="20px" />
+                    </div>
+                    <div class="number" @click="leftPage()">
+                        <img src="../assets/left-arrow.png" width="20px" />
+                    </div>
+                    <div class="pNumber">
+                        {{ pPage }}
+                    </div>
+                    <div class="number" @click="rightPage()">
+                        <img src="../assets/right-arrow.png" width="20px" />
+                    </div>
+                    <div class="number" @click="goEnd()">
+                        <img src="../assets/two-right-arrow.png" width="20px" />
                     </div>
                 </div>
             </div>
@@ -22,30 +34,42 @@
 
 <script>
 export default {
-    props: ['page', 'length', 'totalVisible'],
+    props: ['page', 'length',],
     name: "paginate",
 
     data() {
         return {
-            pPage: 1,
-            pLength: 1,
-            pTotalVisible: 1,
+            pPage: this.page,
+        }
+    },
+
+    watch: {
+        pPage() {
+            this.updatePage()
         }
     },
 
     mounted() {
-        this.getPage()
     },
     methods: {
-        getPage() {
-            if (this.length <= this.totalVisible) {
-                this.pLength = this.length
-            } else {
-                this.pLength = this.totalVisible
+        rightPage() {
+            if (this.pPage < this.length) {
+                this.pPage++
             }
         },
-        changePage(page) {
-            this.pPage = page
+        leftPage() {
+            if (this.pPage <= this.length && this.pPage !== 1) {
+                this.pPage--
+            }
+        },
+        goEnd() {
+            this.pPage = this.length
+        },
+        goFirst() {
+            this.pPage = 1
+        },
+        updatePage() {
+            this.$emit("updatePage", this.pPage)
         }
     }
 };
@@ -100,6 +124,21 @@ export default {
     align-items: center;
     justify-content: center;
     padding: 5px;
+}
+
+.pNumber {
+    min-width: 50px;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 50px;
+    background: lightgreen;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    margin: 5px;
+    -webkit-user-select: none;
 }
 
 .number {

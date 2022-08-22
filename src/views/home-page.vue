@@ -1,6 +1,6 @@
 <template>
   <div>
-    <paginate :page="page" :length="8" :total-visible="6" />
+    <paginate :page="page" :length="10" @updatePage="goServer" />
   </div>
 </template>
 <script>
@@ -11,6 +11,12 @@ export default {
   data() {
     return {
       page: 1
+    }
+  },
+
+  methods: {
+    goServer(data) {
+      alert(data)
     }
   }
 };
